@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>                <!--会影响到动态,别改-->
+    <color name="colorPrimaryDark">@color/color_green</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--<color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>-->
+
+    <!-- 主题颜色 -->
+    <color name="THEME_BLUE">@color/color_head_blue</color> <!-- 皮肤1 THEME_BLUE -->
+    <color name="THEME_GREEN">@color/color_green</color> <!-- 皮肤1 THEME_BLUE -->
+    <color name="color_blacker">#000000</color>
+    <color name="color_white">#ffffffff</color>
+    <color name="color_green">#00bf8f</color>
+    <color name="color_green1">#80dfc7</color>
+    <color name="color_green2">#19daaa</color>
+    <color name="color_green3">#05ba8b</color>
+    <color name="color_purple">#8AA8E6</color>
+    <color name="color_blue_dark">#395899</color>
+    <color name="color_dialog_btn">#eeffffff</color>
+
+    <color name="item_line">#dedede</color><!--半分割线颜色-->
+    <color name="item_line_cover">#cccccc</color><!--覆盖页面分割线颜色-->
+    <color name="text_gray">#303030</color><!--字体灰色-->
+    <color name="text_gray_01">#606060</color><!--字体浅灰色-->
+    <color name="color_gray_backgroud">#f4f4f4</color><!--灰色背景-->
+    <color name="text_red">#CC0000</color> <!--字体红色-->
+    <color name="dialog_text_color">#039edc</color>
+    <color name="text_gray_02">#565656</color>     <!--字体浅灰色-->
+    <color name="tab_gray_backgroud_color">#828E98</color>
+
+    <!--定义子页头部各个控件颜色-->
+    <color name="base_item_header_back">#20000000</color>
+    <color name="base_item_header_title">#a7000000</color>
+
+    <color name="text_color_red">#FF4081</color>    <!--"必填"两字的颜色-->
+    <color name="job_function_bg">#c2c6cc</color>   <!--行业职能子条目的显示颜色-->
+    <color name="custom_imoocstyle">#eb4f38</color>
+
+    <!--<color name="common_selte_button_color">#a4ffffff</color>-->       <!--点击按钮的变化颜色-->
+
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="color_blue">#3A5799</color>
+
+    <color name="color_network_error_hide">#ffff0000</color>
+    <color name="color_network_error_bottom_line">#eaeaea</color><!--网络未连接的提醒View的下划线的backGround-->
+
+    <color name="gray_a">#afafaf</color>
+    <color name="gray_3">#333333</color>
+    <color name="gray_6">#666666</color>
+    <color name="gray_9">#999999</color>
+    <color name="gray_95">#959595</color>
+    <color name="gray_90">#90887e</color>
+    <color name="gray_dividing">#ffcccccc</color>
+    <color name="gray_bg">#ffeeeeee</color>
+    <color name="white">#ffffffff</color>
+    <color name="blue_1">#15aeed</color>
+    <color name="blue_2">#546893</color>
+    <color name="gray_hobby">#6a7989</color>
+
+    <!-- "我的"界面 -->
+    <color name="mine_bg">#ffffff</color>
+    <color name="mine_bg_selected">#d9d9d9</color>
+    <color name="mine_dividing_line_color">#cacaca</color>
+    <color name="mine_text_color_normal">#333333</color>
+    <color name="mine_text_color_selected">#999999</color>
+    <color name="mine_message_container_bg">#f6f7fb</color>
+    <color name="mine_text_text_color">#9c9f9d</color>
+    <color name="mine_add_text_color">#6fbce6</color>
+    <color name="mine_user_name_color">#e7e8ea</color>
+    <color name="mine_invite_enable">#656565</color>
+    <color name="mine_invite_disable">#e7e7e7</color>
+    <color name="want_go_item_text_color1">#313131</color>
+    <color name="want_go_item_text_color2">#707070</color>
+    <color name="want_go_item_text_red_color">#f54c61</color>
+
+    <color name="color_dialog_sidebar">#606060</color>
+    <color name="title_bg">#b7e6db</color>
+    <color name="title_text_color">#ff363636</color>
+    <color name="full_transparent">#00000000</color>
+    <color name="container_bg">#ffeeeeee</color>
+    <color name="trans">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="common_title_bg">#aa111213</color>
+    <color name="primary_title_text_color">#ffeeeeee</color>
+    <color name="album_item_bg">#fffcfcfd</color>
+    <color name="dialog_title_bg">#00adef</color>
+    <color name="message_item_bg1_click">#33FF4081</color>
+
+
+    <color name="color_orange">#fe9311</color>
+    <color name="color_orange2">#6ffe9311</color>
+    <color name="color_dialog_text">#2e2e2e</color>
+    <color name="color_red_btn">#ff0000</color>
+    <color name="color_black_33">#33000000</color>
+    <color name="color_black_20">#20000000</color>
+
+    <color name="color_head_blue">#0071f1</color>
+    <color name="color_light_gray">#66101010</color>
+    <color name="color_light_blue">#aa63B8FF</color>
+    <color name="color_deep_orange">#EE7942</color>
+    <color name="item_blue_line">#6eb7e1</color>
+
+    <color name="color_background">#F2F2F2</color>
+    <color name="text_color_black01">#1A1A1A</color>
+
+    <color name="THEME_SELECTOR_NOMAL">#b9717d</color>
+
+
+</resources>

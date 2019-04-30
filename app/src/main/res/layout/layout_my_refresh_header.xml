@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gdy.playandroid.widget.pull.MyRefreshHeaderView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/refresh_header_height"
+        android:layout_gravity="bottom">
+
+        <ImageView
+            android:id="@+id/ivArrow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:src="@drawable/rll_arrow" />
+
+        <ImageView
+            android:id="@+id/ivSuccess"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:background="@drawable/refresh_success" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:indeterminateDrawable="@drawable/progress_icon"/>
+
+        <TextView
+            android:id="@+id/tvRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="#666"
+            android:text="正在刷新..."/>
+    </RelativeLayout>
+</com.gdy.playandroid.widget.pull.MyRefreshHeaderView>

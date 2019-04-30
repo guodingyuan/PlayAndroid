@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="refresh_header_height">50dp</dimen>
+    <dimen name="load_more_footer_height_classic">50dp</dimen>
+    <dimen name="header_height">48dp</dimen>
+</resources>

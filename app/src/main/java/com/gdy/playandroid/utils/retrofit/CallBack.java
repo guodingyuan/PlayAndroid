@@ -1,0 +1,16 @@
+package com.gdy.playandroid.utils.retrofit;
+
+/**
+ * Created by Tamic on 2016-08-02.
+ */
+public abstract class CallBack {
+    public void onStart(){}
+
+    public void onCompleted(){}
+
+    abstract public void onError(Throwable e);
+
+    public void onProgress(int percent){}
+
+    abstract public void onSucess(String path, String name, long fileSize);
+}

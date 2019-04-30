@@ -1,9 +1,9 @@
 package com.gdy.playandroid.widget.behavior;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.util.AttributeSet;
@@ -11,7 +11,8 @@ import android.view.View;
 
 import com.gdy.playandroid.utils.AnimatorUtil;
 
-public class FabScrollBehavior extends FloatingActionButton.Behavior {
+
+public class BottomBehavior extends CoordinatorLayout.Behavior<View> {
 
     private float value;
     private boolean isAnimateIng = false;
@@ -31,20 +32,18 @@ public class FabScrollBehavior extends FloatingActionButton.Behavior {
         }
     };
 
-    // 因为需要在布局xml中引用，所以必须实现该构造方法
-    public FabScrollBehavior(Context context, AttributeSet attrs) {
+    public BottomBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+
     @Override
-    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull FloatingActionButton child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
-        // 确保滚动方向为垂直方向
-        return axes == ViewCompat.SCROLL_AXIS_VERTICAL || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, axes, type);
+    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
+        return  axes == ViewCompat.SCROLL_AXIS_VERTICAL || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, axes, type);
     }
 
     @Override
-    public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull FloatingActionButton child, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type);
+    public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
         if ((dyConsumed > 0 || dyUnconsumed > 0) && !isAnimateIng && isShow) { // 向下滑动
             if(value==0){
                 CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) child.getLayoutParams();

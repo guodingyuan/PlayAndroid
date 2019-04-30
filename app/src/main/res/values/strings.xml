@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">PlayAndroid</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_1">首页</string>
+    <string name="main_2">首页</string>
+    <string name="main_3">首页</string>
+    <string name="main_4">首页</string>
+    <string name="main_5">首页</string>
 </resources>

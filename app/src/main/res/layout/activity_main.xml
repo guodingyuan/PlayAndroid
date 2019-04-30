@@ -9,23 +9,33 @@
 
    <include layout="@layout/layout_common_header"/>
 
-    <FrameLayout
-        android:id="@+id/containerFL"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    </FrameLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
+        app:layout_behavior="com.gdy.playandroid.widget.behavior.BottomBehavior"
+        app:menu="@menu/navigation" />
+
 
    <android.support.design.widget.FloatingActionButton
        android:id="@+id/goTopFAB"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_gravity="bottom|right"
-       android:layout_marginRight="20dp"
-       android:layout_marginBottom="20dp"
-       app:layout_behavior="com.gdy.playandroid.widget.behavior.FabScrollBehavior"
+       android:layout_marginBottom="70dp"
+       android:layout_marginRight="14dp"
+       app:layout_behavior="com.gdy.playandroid.widget.behavior.BottomBehavior"
        app:srcCompat="@drawable/ic_arrow_upward_black_24dp"/>
-
 
     <Button
         android:id="@+id/loginBT"

@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +43,6 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
     SwipeToLoadLayout swipetoloadlayout;
     @BindView(R.id.multiple_status_view)
     MultipleStatusView multipleStatusView;
-    Unbinder unbinder;
 
     private Banner banner;
     private HomeAdapter adapter;

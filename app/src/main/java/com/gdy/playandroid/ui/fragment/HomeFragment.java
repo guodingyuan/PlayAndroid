@@ -63,7 +63,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
         linearLayoutManager = new LinearLayoutManager(getActivity());
         swipeTarget.setLayoutManager(linearLayoutManager);
         articleList = new ArrayList<>();
-        adapter = new HomeAdapter(R.layout.home_article_item, articleList);
+        adapter = new HomeAdapter(articleList);
         View header = getLayoutInflater().inflate(R.layout.home_header, null);
         banner = header.findViewById(R.id.banner);
         adapter.addHeaderView(header);
@@ -184,6 +184,18 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
             swipeTarget.scrollToPosition(0);
         }else {
             swipeTarget.smoothScrollToPosition(0);
+        }
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(banner!=null){
+            if(isVisibleToUser){
+                banner.startAutoPlay();
+            }else {
+                banner.stopAutoPlay();
+            }
         }
     }
 }

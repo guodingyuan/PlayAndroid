@@ -4,6 +4,7 @@ import com.gdy.playandroid.mvp.bean.Article;
 import com.gdy.playandroid.mvp.bean.ArticlePage;
 import com.gdy.playandroid.mvp.bean.BannerData;
 import com.gdy.playandroid.mvp.bean.LoginData;
+import com.gdy.playandroid.mvp.bean.Navigation;
 import com.gdy.playandroid.mvp.bean.ResponseBean;
 
 import java.util.List;
@@ -83,4 +84,12 @@ public interface BaseApiService {
    */
   @GET("article/list/{pageNum}/json")
   Observable<ResponseBean<ArticlePage>> getArticles(@Path("pageNum")int pageNum);
+
+
+  /**
+   * 导航数据
+   * http://www.wanandroid.com/navi/json
+   */
+  @GET("navi/json")
+  Observable<ResponseBean<List<Navigation>>> getNavigationList();
 }

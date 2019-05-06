@@ -200,7 +200,7 @@ public class MyWebViewLayout extends LinearLayout {
         mWebView.loadUrl(url);
     }
 
-    public com.tencent.smtt.sdk.WebView getmWebView() {
+    public WebView getmWebView() {
         return mWebView;
     }
 
@@ -208,5 +208,15 @@ public class MyWebViewLayout extends LinearLayout {
     public void setRefreshEnabled(boolean enable){
         swipetoloadlayout.setRefreshEnabled(enable);
         mWebView.setEnableRefresh(enable);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        //在控件销毁前，进行WebView销毁
+        if(mWebView!=null){
+            mWebView.removeAllViews();
+            mWebView.destroy();
+        }
+        super.onDetachedFromWindow();
     }
 }

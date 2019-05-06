@@ -18,8 +18,8 @@ import java.util.List;
 
 public class HomeAdapter extends BaseQuickAdapter<Article,BaseViewHolder> {
 
-    public HomeAdapter(int layoutResId, @Nullable List<Article> data) {
-        super(layoutResId, data);
+    public HomeAdapter(@Nullable List<Article> data) {
+        super(R.layout.home_article_item,data);
     }
 
     @Override

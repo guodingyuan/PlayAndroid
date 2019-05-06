@@ -1,4 +1,4 @@
-package com.gdy.playandroid;
+package com.gdy.playandroid.ui.activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,11 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.gdy.playandroid.R;
 import com.gdy.playandroid.adapter.MainPagerAdapter;
 import com.gdy.playandroid.base.BaseActivity;
 import com.gdy.playandroid.base.BaseFragment;
-import com.gdy.playandroid.ui.activity.LoginActivity;
 import com.gdy.playandroid.ui.fragment.HomeFragment;
+import com.gdy.playandroid.ui.fragment.NavigationFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,14 +52,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        titleTV.setText("PlayAndroid");
+        titleTV.setText("首页");
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setLabelVisibilityMode(1);//升级到 28.0.0后，可用这句代替下面这句，Nice!
         //BottomNavigationViewHelper.disableShiftMode(navigation);
         mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
-        mFragments.add(new HomeFragment());
+        mFragments.add(new NavigationFragment());
         mFragments.add(new HomeFragment());
         mFragments.add(new HomeFragment());
         mFragments.add(new HomeFragment());
@@ -96,7 +97,12 @@ public class MainActivity extends BaseActivity {
         goTopFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomeFragment)mFragments.get(0)).scrollToTop();
+                BaseFragment baseFragment = mFragments.get(containerPager.getCurrentItem());
+                if(baseFragment instanceof NavigationFragment){
+                    ((NavigationFragment) baseFragment).scrollToTop();
+                }else {
+                    ((HomeFragment)baseFragment).scrollToTop();
+                }
             }
         });
     }
@@ -117,6 +123,7 @@ public class MainActivity extends BaseActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             int i = item.getItemId();
             containerPager.setCurrentItem(idList.indexOf(i),false);
+            titleTV.setText(item.getTitle());
             return true;
         }
     };

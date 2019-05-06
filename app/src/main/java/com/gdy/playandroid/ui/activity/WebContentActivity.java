@@ -8,6 +8,7 @@ import com.gdy.playandroid.base.BaseActivity;
 import com.gdy.playandroid.constants.Constant;
 import com.gdy.playandroid.utils.Global;
 import com.gdy.playandroid.widget.web.MyWebViewLayout;
+import com.tencent.smtt.sdk.WebView;
 
 import butterknife.BindView;
 
@@ -17,6 +18,7 @@ public class WebContentActivity extends BaseActivity {
     MyWebViewLayout myWebViewLayout;
     @BindView(R.id.titleTV)
     TextView titleTV;
+    private WebView webView;
 
     @Override
     protected int attachLayoutRes() {
@@ -31,6 +33,7 @@ public class WebContentActivity extends BaseActivity {
         } else {
             Global.showToast("链接无效");
         }
+        webView = myWebViewLayout.getmWebView();
     }
 
     @Override
@@ -46,5 +49,14 @@ public class WebContentActivity extends BaseActivity {
     @Override
     protected void getData() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(webView.canGoBack()){
+            webView.goBack();
+        }else {
+            super.onBackPressed();
+        }
     }
 }

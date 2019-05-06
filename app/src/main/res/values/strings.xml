@@ -2,8 +2,22 @@
     <string name="app_name">PlayAndroid</string>
 
     <string name="main_1">首页</string>
-    <string name="main_2">首页</string>
+    <string name="main_2">导航</string>
     <string name="main_3">首页</string>
     <string name="main_4">首页</string>
     <string name="main_5">首页</string>
+
+    //权限相关
+    <string name="permission_camera">相机</string>
+    <string name="permission_read_phone_state">手机信息</string>
+    <string name="permission_write_external_storage">存储空间</string>
+    <string name="permission_access_coarse_location">定位</string>
+    <string name="permission_read_contacts">读取联系人</string>
+    <string name="permission_record_audio">录音</string>
+
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -85,4 +85,9 @@ dependencies {
     implementation 'q.rorbin:VerticalTabLayout:1.2.5'
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation 'com.github.iielse:ImageWatcher:1.1.5'
+    implementation ("com.github.bumptech.glide:recyclerview-integration:4.9.0") {
+        // Excludes the support library because it's already included by Glide.
+        transitive = false
+    }
 }

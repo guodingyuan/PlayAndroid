@@ -16,6 +16,7 @@ import com.gdy.playandroid.R;
 import com.gdy.playandroid.utils.Global;
 import com.gdy.playandroid.utils.GlobalUtils;
 import com.gdy.playandroid.utils.LogUtil;
+import com.github.ielse.imagewatcher.ImageWatcherHelper;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
@@ -23,6 +24,9 @@ import com.tencent.smtt.sdk.URLUtil;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -35,6 +39,7 @@ public class MyWebViewLayout extends LinearLayout {
     private MyWebView mWebView;
     private LinearLayout errorLL;
     private boolean isReLoading;
+    private ImageWatcherHelper iwHelper;
 
     public MyWebViewLayout(Context context) {
         super(context);
@@ -115,8 +120,14 @@ public class MyWebViewLayout extends LinearLayout {
                 return false;
             }
         });
+
+        //注入本地接口
+        mWebView.addJavascriptInterface(new MyJavascriptInterface(),"imageListener");
     }
 
+    public void setIwHelper(ImageWatcherHelper iwHelper) {
+        this.iwHelper = iwHelper;
+    }
 
     /**定义一个接口用于拦截请求*/
     public interface InterceptRequest{
@@ -164,6 +175,20 @@ public class MyWebViewLayout extends LinearLayout {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+            //网页加载完成，走JS代码，获取网页图片
+            mWebView.loadUrl("javascript:(function(){" +
+                    "var objs = document.getElementsByTagName(\"img\"); " +
+                    " var array=new Array(); " +
+                    "for(var i=0;i<objs.length;i++)  " +
+                    "{"
+                    + "    objs[i].onclick=function()  " +
+                    "    {  "
+                    +       " for(var j=0;j<objs.length;j++){ array[j]=objs[j].src; }"//解决部分图片是data开头的，特意放在点击事件处获取
+                    + "        window.imageListener.openImage(this.src,array);  " +
+                    "    }  " +
+                    "}" +
+                    "})()"
+            );
             dialogLayout.setVisibility(View.GONE);
             if (isReLoading) {
                 isReLoading = false;
@@ -219,4 +244,33 @@ public class MyWebViewLayout extends LinearLayout {
         }
         super.onDetachedFromWindow();
     }
+
+
+    public class MyJavascriptInterface {
+        @android.webkit.JavascriptInterface
+        public void  openImage(String img, String[] imgs) {
+//           LogUtil.loge("点击图片："+img);
+//           LogUtil.loge("所有图片："+JSON.toJSONString(imgs));
+           if(iwHelper!=null){
+               if(img!=null && imgs!=null && imgs.length>0){
+                   Global.runInMainThread(() -> {
+                       List<Uri> list=new ArrayList<>();
+                       int position=0;
+                       for(int i=0;i<imgs.length;i++){
+                           if(!TextUtils.isEmpty(imgs[i]) && imgs[i].startsWith("http")){
+                               list.add(Uri.parse(imgs[i]));
+                               if(img.equals(imgs[i])){
+                                   position=i;
+                               }
+                           }
+                       }
+                       if(list.size()>0){
+                           iwHelper.show(list,position);
+                       }
+                   });
+               }
+           }
+        }
+    }
+
 }

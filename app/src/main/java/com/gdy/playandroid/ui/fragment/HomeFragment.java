@@ -49,7 +49,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
     private boolean isRefresh;
     private List<Article> articleList;
     private LinearLayoutManager linearLayoutManager;
-
+    private int pageSize;
 
     @Override
     protected int attachLayoutRes() {
@@ -72,7 +72,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
             @Override
             public void onLoadMoreRequested() {
                 isRefresh = false;
-                int pageNum = adapter.getData().size() / 20;//每页20条
+                int pageNum = adapter.getData().size() / pageSize;//页码从0开始
                 mPresenter.requestArticleByPage(pageNum);
             }
         }, swipeTarget);
@@ -138,6 +138,9 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
 
     @Override
     public void setArticleData(ArticlePage articlePage) {
+        if(pageSize==0){
+            pageSize=articlePage.getSize();
+        }
         List<Article> list = articlePage.getDatas();
         if (isRefresh) {
             swipetoloadlayout.setRefreshing(false);
@@ -145,10 +148,10 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
         } else {
             adapter.addData(list);
         }
-        if (list.size() > 0) {
-            adapter.loadMoreComplete();
-        } else {
+        if (list.size() < pageSize) {
             adapter.loadMoreEnd();
+        } else {
+            adapter.loadMoreComplete();
         }
         if(articleList.size()==0){
             multipleStatusView.showEmpty();

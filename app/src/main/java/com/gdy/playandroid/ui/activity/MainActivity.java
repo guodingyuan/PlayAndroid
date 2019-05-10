@@ -16,6 +16,7 @@ import com.gdy.playandroid.base.BaseActivity;
 import com.gdy.playandroid.base.BaseFragment;
 import com.gdy.playandroid.ui.fragment.HomeFragment;
 import com.gdy.playandroid.ui.fragment.NavigationFragment;
+import com.gdy.playandroid.ui.fragment.ProjectFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,7 +61,7 @@ public class MainActivity extends BaseActivity {
         mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new NavigationFragment());
-        mFragments.add(new HomeFragment());
+        mFragments.add(new ProjectFragment());
         mFragments.add(new HomeFragment());
         mFragments.add(new HomeFragment());
         MainPagerAdapter mAdapter = new MainPagerAdapter(getSupportFragmentManager(), mFragments);
@@ -100,8 +101,10 @@ public class MainActivity extends BaseActivity {
                 BaseFragment baseFragment = mFragments.get(containerPager.getCurrentItem());
                 if(baseFragment instanceof NavigationFragment){
                     ((NavigationFragment) baseFragment).scrollToTop();
-                }else {
+                }else if(baseFragment instanceof HomeFragment){
                     ((HomeFragment)baseFragment).scrollToTop();
+                }else if(baseFragment instanceof ProjectFragment){
+                    ((ProjectFragment)baseFragment).scrollToTop();
                 }
             }
         });

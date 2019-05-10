@@ -10,7 +10,6 @@
     tools:context=".ui.fragment.NavigationFragment">
 
     <LinearLayout
-        android:id="@+id/swipe_target"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <q.rorbin.verticaltablayout.VerticalTabLayout

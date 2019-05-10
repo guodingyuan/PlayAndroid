@@ -15,7 +15,6 @@ import com.gdy.playandroid.base.BaseMvpFragment;
 import com.gdy.playandroid.mvp.bean.Navigation;
 import com.gdy.playandroid.mvp.contract.NavigationContract;
 import com.gdy.playandroid.mvp.presenter.NavigationPresenter;
-import com.gdy.playandroid.utils.LogUtil;
 
 import java.util.List;
 
@@ -70,9 +69,9 @@ public class NavigationFragment extends BaseMvpFragment<NavigationContract.View,
                 public void onTabSelected(TabView tab, int position) {
                     int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
                     int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();
-                    LogUtil.loge("位置："+position+"，开始："+firstVisibleItemPosition+"，结束："+lastVisibleItemPosition+"，总数："+linearLayoutManager.getItemCount());
+                    //LogUtil.loge("位置："+position+"，开始："+firstVisibleItemPosition+"，结束："+lastVisibleItemPosition+"，总数："+linearLayoutManager.getItemCount());
                     if(position>=firstVisibleItemPosition && position<=lastVisibleItemPosition && lastVisibleItemPosition!=linearLayoutManager.getItemCount()-1){
-                        LogUtil.loge("距离："+linkRV.getChildAt(position-firstVisibleItemPosition).getTop());
+                        //LogUtil.loge("距离："+linkRV.getChildAt(position-firstVisibleItemPosition).getTop());
                         linkRV.smoothScrollBy(0,linkRV.getChildAt(position-firstVisibleItemPosition).getTop());
                     }else {
                         linearLayoutManager.scrollToPositionWithOffset(position,0);//定位到指定项如果该项可以置顶就将其置顶显示
@@ -113,13 +112,7 @@ public class NavigationFragment extends BaseMvpFragment<NavigationContract.View,
     @Override
     public void showError(String errorMsg) {
         super.showError(errorMsg);
-        /*if (isRefresh) {
-            swipetoloadlayout.setRefreshing(false);
-        }
-        adapter.loadMoreFail();
-        if(articleList.size()==0){
-            multipleStatusView.showError();
-        }*/
+        multipleStatusView.showError();
     }
 
     public void scrollToTop(){

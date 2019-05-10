@@ -3,6 +3,7 @@ package com.gdy.playandroid.ui.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.FrameLayout;
 
 import com.gdy.playandroid.R;
@@ -17,6 +18,8 @@ public class SplashActivity extends BaseActivity {
 
     @BindView(R.id.containerFL)
     FrameLayout containerFL;
+    private boolean isEndAnim=false;
+    private boolean isHasPermission=false;
 
     @Override
     protected int attachLayoutRes() {
@@ -27,6 +30,23 @@ public class SplashActivity extends BaseActivity {
     protected void initData() {
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.2f, 1.0f);
         alphaAnimation.setDuration(2000);
+        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                isEndAnim=true;
+                gotoMain();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
         containerFL.startAnimation(alphaAnimation);
     }
 
@@ -48,11 +68,18 @@ public class SplashActivity extends BaseActivity {
                 new PermissionHandler(true) {
                     @Override
                     public void onGranted() {
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        isHasPermission=true;
+                        gotoMain();
                     }
                 }.setPermissionName(GlobalUtils.getString(R.string.permission_read_phone_state)+"和"+GlobalUtils.getString(R.string.permission_write_external_storage)));
+    }
+
+    private void gotoMain(){
+        if(isEndAnim && isHasPermission){
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
     }
 }

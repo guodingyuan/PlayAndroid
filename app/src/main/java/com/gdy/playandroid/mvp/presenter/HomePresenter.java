@@ -35,6 +35,23 @@ public class HomePresenter extends BasePresenter<HomeContract.Model,HomeContract
 
     @Override
     public void requestArticleData() {
+        RxJavaUtils.dealData(
+                mModel.requestTopArticles().zipWith(mModel.requestArticles(0), (listResponseBean, articlePageResponseBean) -> {
+                    List<Article> articleList = listResponseBean.getData();
+                    for (Article article:articleList) {
+                        article.setTop(true);
+                    }
+                    articlePageResponseBean.getData().getDatas().addAll(0,articleList);
+                    return articlePageResponseBean;
+                }), new BaseObserver<ArticlePage>(mModel,mView) {
+                    @Override
+                    public void onHandleSuccess(ArticlePage data) {
+                        mView.setArticleData(data);
+                    }
+                }
+        );
+        
+        /*
         Observable.zip(mModel.requestTopArticles(), mModel.requestArticles(0),
                 new BiFunction<ResponseBean<List<Article>>, ResponseBean<ArticlePage>, ResponseBean<ArticlePage>>() {
                     @Override
@@ -52,7 +69,7 @@ public class HomePresenter extends BasePresenter<HomeContract.Model,HomeContract
                     public void onHandleSuccess(ArticlePage data) {
                         mView.setArticleData(data);
                     }
-                }.setShowLoading(true));
+                }.setShowLoading(true));*/
     }
 
     @Override

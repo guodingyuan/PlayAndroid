@@ -5,6 +5,7 @@ import com.gdy.playandroid.mvp.bean.ArticlePage;
 import com.gdy.playandroid.mvp.bean.BannerData;
 import com.gdy.playandroid.mvp.bean.LoginData;
 import com.gdy.playandroid.mvp.bean.Navigation;
+import com.gdy.playandroid.mvp.bean.ProjectTree;
 import com.gdy.playandroid.mvp.bean.ResponseBean;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
@@ -92,4 +94,20 @@ public interface BaseApiService {
    */
   @GET("navi/json")
   Observable<ResponseBean<List<Navigation>>> getNavigationList();
+
+  /**
+   * 项目数据
+   * http://www.wanandroid.com/project/tree/json
+   */
+  @GET("project/tree/json")
+  Observable<ResponseBean<List<ProjectTree>>> getProjectTree();
+
+  /**
+   * 项目列表数据
+   * http://www.wanandroid.com/project/list/1/json?cid=294
+   * @param page
+   * @param cid
+   */
+  @GET("project/list/{page}/json")
+  Observable<ResponseBean<ArticlePage>> getProjectData(@Path("page") int page, @Query("cid")int cid);
 }

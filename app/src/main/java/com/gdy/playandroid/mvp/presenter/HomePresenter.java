@@ -4,17 +4,12 @@ import com.gdy.playandroid.base.BasePresenter;
 import com.gdy.playandroid.mvp.bean.Article;
 import com.gdy.playandroid.mvp.bean.ArticlePage;
 import com.gdy.playandroid.mvp.bean.BannerData;
-import com.gdy.playandroid.mvp.bean.ResponseBean;
 import com.gdy.playandroid.mvp.contract.HomeContract;
 import com.gdy.playandroid.mvp.model.HomeModel;
 import com.gdy.playandroid.utils.retrofit.BaseObserver;
 import com.gdy.playandroid.utils.retrofit.RxJavaUtils;
-import com.gdy.playandroid.utils.retrofit.SchedulerUtils;
 
 import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.functions.BiFunction;
 
 public class HomePresenter extends BasePresenter<HomeContract.Model,HomeContract.View> implements HomeContract.Presenter {
 
@@ -48,7 +43,7 @@ public class HomePresenter extends BasePresenter<HomeContract.Model,HomeContract
                     public void onHandleSuccess(ArticlePage data) {
                         mView.setArticleData(data);
                     }
-                }
+                }.setShowLoading(true)
         );
         
         /*

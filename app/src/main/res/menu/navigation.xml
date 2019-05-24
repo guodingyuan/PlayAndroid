@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/navigation_4"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_videocam_black_24dp"
         android:title="@string/main_4" />
 
     <item

@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.gdy.playandroid.R;
 import com.gdy.playandroid.mvp.bean.Article;
 import com.gdy.playandroid.utils.GlobalUtils;
-import com.gdy.playandroid.utils.glide.GlideApp;
+import com.gdy.playandroid.utils.glide.GlideUtil;
 
 import java.util.List;
 
@@ -31,6 +31,7 @@ public class ProjectDataAdapter extends BaseQuickAdapter<Article,BaseViewHolder>
                 .setText(R.id.descTV,item.getDesc());
         String envelopePic = item.getEnvelopePic();
         ImageView picIV = helper.getView(R.id.picIV);
-        GlideApp.with(mContext).load(envelopePic).placeholder(R.color.gray_bg).thumbnail(0.25f).override(imgSize).centerCrop().into(picIV);
+        //GlideApp.with(mContext).load(envelopePic).placeholder(R.color.gray_bg)./*thumbnail(0.25f).override(imgSize).centerCrop().*/into(picIV);
+        GlideUtil.load(envelopePic,picIV);
     }
 }

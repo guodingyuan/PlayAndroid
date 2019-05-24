@@ -36,7 +36,7 @@ public class NavigationTabAdapter implements TabAdapter {
     public ITabView.TabTitle getTitle(int position) {
         return new ITabView.TabTitle.Builder()
                 .setContent(list.get(position).getName())
-                .setTextColor(GlobalUtils.getColor(R.color.THEME_GREEN),GlobalUtils.getColor(R.color.gray_6))
+                .setTextColor(GlobalUtils.getColor(R.color.white),GlobalUtils.getColor(R.color.gray_6))
                 .build();
     }
 

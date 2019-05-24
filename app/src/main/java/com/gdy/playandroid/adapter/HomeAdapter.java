@@ -13,8 +13,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.gdy.playandroid.R;
 import com.gdy.playandroid.mvp.bean.Article;
 import com.gdy.playandroid.mvp.bean.Tag;
-import com.gdy.playandroid.utils.GlobalUtils;
-import com.gdy.playandroid.utils.glide.GlideApp;
+import com.gdy.playandroid.utils.glide.GlideUtil;
 
 import java.util.List;
 
@@ -43,7 +42,8 @@ public class HomeAdapter extends BaseQuickAdapter<Article,BaseViewHolder> {
         ImageView picIV = helper.getView(R.id.picIV);
         if(!TextUtils.isEmpty(envelopePic)){
             picIV.setVisibility(View.VISIBLE);
-            GlideApp.with(mContext).load(envelopePic).placeholder(R.color.gray_bg).thumbnail(0.25f).override(GlobalUtils.dp2px(54)).centerCrop().into(picIV);
+            //GlideApp.with(mContext).load(envelopePic).placeholder(R.color.gray_bg).thumbnail(0.25f).override(GlobalUtils.dp2px(54)).centerCrop().into(picIV);
+            GlideUtil.load(envelopePic,picIV);
         }else {
             picIV.setVisibility(View.GONE);
         }

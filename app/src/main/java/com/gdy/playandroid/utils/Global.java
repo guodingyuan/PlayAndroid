@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.widget.Toast;
 
 
@@ -73,6 +74,7 @@ public class Global {
 			public void run() {
 				if (mToast == null) {
 					mToast=Toast.makeText(mContext, text, Toast.LENGTH_SHORT);
+					mToast.setGravity(Gravity.CENTER, 0, 0);
 				}
 				mToast.setText(text);
 				mToast.show();

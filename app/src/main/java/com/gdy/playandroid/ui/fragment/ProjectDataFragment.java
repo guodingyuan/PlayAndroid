@@ -108,7 +108,8 @@ public class ProjectDataFragment extends BaseMvpFragment<ProjectDataContract.Vie
         imageWidthPixels=imageHeightPixels=GlobalUtils.dp2px(140);
         ListPreloader.PreloadSizeProvider<String> sizeProvider = new FixedPreloadSizeProvider<>(imageWidthPixels, imageHeightPixels);
         ListPreloader.PreloadModelProvider<String> modelProvider = new MyPreloadModelProvider(getActivity());
-        //RecyclerViewPreloader<String> preloader = new RecyclerViewPreloader<>(Glide.with(this), modelProvider, sizeProvider, 15);
+        //当布局是LinearLayoutManager用下面这个
+        // RecyclerViewPreloader<String> preloader = new RecyclerViewPreloader<>(Glide.with(this), modelProvider, sizeProvider, 15);
         RecyclerStaggeredGridViewPreloader<String> preloader=new RecyclerStaggeredGridViewPreloader<>(Glide.with(this), modelProvider, sizeProvider, 15);
         swipeTarget.addOnScrollListener(preloader);
 

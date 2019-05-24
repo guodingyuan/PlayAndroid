@@ -3,6 +3,8 @@ package com.gdy.playandroid.utils.glide;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.gdy.playandroid.R;
 import com.youth.banner.loader.ImageLoader;
 
 public class GlideImageLoader extends ImageLoader {
@@ -16,6 +18,6 @@ public class GlideImageLoader extends ImageLoader {
          切记不要胡乱强转！
          */
         //Glide 加载图片简单用法
-        GlideApp.with(context).load(path).into(imageView);
+        GlideApp.with(context).load(path).diskCacheStrategy(DiskCacheStrategy.DATA).placeholder(R.color.gray_bg).into(imageView);
     }
 }

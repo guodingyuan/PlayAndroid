@@ -17,6 +17,7 @@ import com.gdy.playandroid.base.BaseFragment;
 import com.gdy.playandroid.ui.fragment.HomeFragment;
 import com.gdy.playandroid.ui.fragment.NavigationFragment;
 import com.gdy.playandroid.ui.fragment.ProjectFragment;
+import com.gdy.playandroid.utils.Global;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -118,6 +119,17 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setBack() {
         backIV.setVisibility(View.GONE);
+    }
+
+    private long exitTime;
+    @Override
+    public void onBackPressed() {
+        if(System.currentTimeMillis()-exitTime<2000){
+            super.onBackPressed();
+        }else {
+            exitTime=System.currentTimeMillis();
+            Global.showToast("再按一次退出程序");
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

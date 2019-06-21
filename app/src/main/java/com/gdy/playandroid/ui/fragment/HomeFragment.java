@@ -99,6 +99,8 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.View, HomeContrac
     protected void lazyLoad() {
         mPresenter.requestBannerData();
         mPresenter.requestArticleData();
+
+        //UpdateVersionUtil.checkUpdate();//检查版本更新
     }
 
     @Override

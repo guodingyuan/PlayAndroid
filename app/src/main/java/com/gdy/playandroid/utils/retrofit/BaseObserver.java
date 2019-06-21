@@ -62,4 +62,8 @@ public abstract class BaseObserver<T> implements Observer<ResponseBean<T>> {
         view.hideLoading();
         view.showError(errorMsg);
     }
+
+    public IView getView() {
+        return view;
+    }
 }

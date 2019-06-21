@@ -87,4 +87,13 @@ dependencies {
         transitive = false
     }
     implementation project(':verticaltablayout')
+    implementation 'com.uber.autodispose:autodispose-android-archcomponents:1.0.0-RC3'
+    implementation 'com.uber.autodispose:autodispose-android:1.0.0-RC3'
+
+
+
+
+
+
+    implementation 'com.allenliu.versionchecklib:library:2.2.0'
 }

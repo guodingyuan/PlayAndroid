@@ -19,3 +19,11 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+#版本更新混淆
+-keepattributes Annotation
+-keepclassmembers class * {    @org.greenrobot.eventbus.Subscribe ;}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {    (java.lang.Throwable);}
+-keep class com.allenliu.versionchecklib.**{*;}

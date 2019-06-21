@@ -73,8 +73,8 @@ public class GlobalUtils {
 		return getResources().getDrawable(drawId);
 	}
 	/** 根据id获取字符串*/
-	public static String getString(int strId){
-		return getResources().getString(strId);
+	public static String getString(int strId, Object... formatArgs){
+		return getResources().getString(strId,formatArgs);
 	}
 	/** 根据id获取字符数组*/
 	public static String[] getStringArray(int arrId){

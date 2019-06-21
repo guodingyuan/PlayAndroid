@@ -53,12 +53,16 @@ public class RetrofitClient {
     public static String baseUrl = BaseApiService.Base_URL;
     private static Context mContext=Global.getContext();
     private static Retrofit retrofit;
+    private static RetrofitClient retrofitClient;
     private Cache cache = null;
     private File httpCacheDirectory;
 
 
-    public static RetrofitClient getInstance() {
-        return new RetrofitClient();
+    public static synchronized RetrofitClient getInstance() {
+        if(retrofitClient==null) {
+            retrofitClient = new RetrofitClient();
+        }
+        return retrofitClient;
     }
 
     public static RetrofitClient getInstance(String url) {
@@ -136,7 +140,7 @@ public class RetrofitClient {
 
     public static BaseApiService getApiService(){
         if(apiService==null){
-            if(retrofit==null){
+            if(retrofitClient==null){
                 getInstance();
             }
             apiService=retrofit.create(BaseApiService.class);
